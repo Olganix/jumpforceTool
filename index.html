@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JumpForceTool</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+  
+.dragArea_file {
+    position: relative;
+    height: 26px;
+    min-width: 300px;
+    border: 2px dotted #0099ff;
+    border-radius: 10px;
+    background-color: #f6f6f9;
+    padding: 3px 9px;
+}
+.dragArea_file:hover 
+{
+  background-color: #b3d8f1;
+  border-color: #0099ff;
+}
+
+.dragArea_file:hover > .dragArea_filename
+{
+  color: #FFFFFF;
+}
+
+
+.dragArea_bts {
+    position: absolute;
+    right: 5px;
+}
+
+button > img 
+{
+    max-width: 100%;
+    height: auto;
+}
+
+.bt_load, .bt_save, .bt_delete
+{
+    display: none;
+    width: 30px;
+    height: 25px;
+    border-radius: 5px;
+}
+.bt_delete
+{
+  background-color: #c60f0f;
+}
+.dragHolder
+{
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    background-color: #bce3fd;
+    vertical-align: middle;
+}
+
+.dragArea_file:hover .bt_load,
+.dragArea_file:hover .bt_save,
+.dragArea_file:hover .bt_delete,
+.dragArea_file .dragHolder
+{
+  display: inline-block;
+}
+
+.dragArea_file.drag 
+{
+  position: absolute;
+}
+
+.dragArea_filename {
+    line-height: 24px;
+}
+
+.subFiles_container {
+    min-width: 300px;
+    min-height: 300px;
+    border: 2px dashed #0099ff;
+    border-radius: 10px;
+    background-color: #f6f6f9;
+    padding: 10px 10px;
+    margin-top: 10px;
+    height: initial;
+}
+
+
+.bt_load.importUexp, .bt_save.extractUexp, .bt_delete.clearAll
+{
+  display: inline-block;
+}
+
+.dragArea_filename, 
+#uexp_startId, 
+#bndfll_unknow,
+.dragArea_input
+{
+    display: inline-block;
+}
+
+#uexp_startId,
+#bndfll_unknow,
+.dragArea_input
+{
+    width: 90px;
+}
+
+
+/****** common *******/
+
+.log_container
+{
+  position: fixed;
+  bottom: 5px;
+  left: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.log_message
+{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  border: 1px solid #9cbde9;
+  text-align: center;
+  opacity: 1.0;
+  transition: opacity 1s;
+}
+.log_message.hiding
+{
+  opacity: 0.0;
+}
+.log_message.error
+{
+  color: #FF0000;
+}
+.log_message.warning
+{
+  color: #ff7b00;
+}
+.log_message.info
+{
+  color: #006eff;
+}
+.log_message.debug
+{
+  color: #1eff00;
+}
+.log_message.trace
+{
+  color: #000000;
+}
+
+
+  </style>
+
+</head>
+<body>
+
+    <h1>JumpForceTool : Uasset Uexp's BNDFLL editor</h1>
+    
+    <div class="dragArea_file importPackage" id="importPackage" >
+      <div class="dragArea_bts">
+        <button class="bt_load"><img src="" /></button>
+        <button class="bt_save"><img src="" /></button>
+        <button class="bt_delete clearPackage"><img src="" /></button>
+      </div>
+      <div class="dragArea_filename">Import package</div>
+      <input id="uexp_startId" value="0x7" placeholder="Uexp start Id" />
+      <input id="bndfll_unknow" value="0x1" placeholder="Bndfll unknow, maybe a number of" />
+    </div>
+    <div class="subFiles_container dragArea_file" id="listUexp">
+      <div class="subFiles_container_uasset">
+
+          <div class="dragArea_file Uasset" id="Uasset" >
+            <div class="dragArea_bts">
+              <button class="bt_load"><img src="" /></button>
+              <button class="bt_save"><img src="" /></button>
+              <button class="bt_delete"><img src="" /></button>
+            </div>
+            <div class="dragArea_filename">Import Uasset file</div>
+          </div>
+
+      </div>
+      <hr/>
+      <p>BNDFLL :</p>
+      <div class="subFiles_container_uexps" ></div>
+      <button class="bt_load importUexp"><img src="" /></button>
+      <button class="bt_save extractUexp"><img src="" /></button>
+      <button class="bt_delete clearAll"><img src="" /></button>
+    </div>
+
+<script type="text/javascript">
+    require('./renderer')
+</script>
+    
+</body>
+</html>

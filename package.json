@@ -1,0 +1,19 @@
+{
+  "name": "jumpforcetool",
+  "version": "1.0.0",
+  "description": "Tool for some modding on Jump Force game's files",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Olganix",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^7.1.2"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-dist": "^1.12.1"
+  }
+}
