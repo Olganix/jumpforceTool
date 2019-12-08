@@ -8,10 +8,8 @@ let $ = window.$ = window.jQuery = require('jquery');
 require('jquery-ui-dist/jquery-ui')             //https://stackoverflow.com/questions/34485506/jquery-ui-and-electron
 
 
-//put on Git, and explain how to make it work. and also limitations. list of extensions allowed. the fact everyone could easely update UI and code because of javascript.
-//Notice: "electron-packager . --all" to make a exe (and others plateforms), but on windows7 you need .Net 4.5 framework and last version of power shell (https://devblogs.microsoft.com/scripting/weekend-scripter-install-powershell-3-0-on-windows-7/)
-
 //Todo in future :
+//add a button to get the FileId from the filename.
 //solve the f..king drag ghost /selection (we prefere use the small dragHolder for sortable)
 //may be on drag and drop externe = save, specially avoid rederer.js
 //may be add a multi Selection (Shift or ctrl selection)
