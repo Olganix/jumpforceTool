@@ -8,7 +8,7 @@ const electron = require('electron');
 const {app, dialog, BrowserWindow, remote, ipcMain} = electron;
 const ipc = ipcMain;
 const path = require('path')
-const isProd = false;                                  //todo change for prod.
+const isProd = true;
 
 let mainWindow;
 
@@ -44,7 +44,7 @@ function createWindow ()
             title: 'Load a file',
             filters: 
             [
-                {name: 'unreal', extensions: ['uasset', 'uexp', 'san', "prm", "flw", "fld", "sad", "lip", "frmd", "srdp", "stx"]},
+                {name: 'unreal', extensions: ['uasset', 'uexp', 'apb', 'asb', 'enumdef', 'fld', "flw", "frmd", 'lip', 'lua', 'msb', 'nmb', "prm", 'prmdef', 'repb', 'san', "srdp", "stx", "sad"]},
                 //{name: 'text', extensions: ['txt']},
                 //{name: 'All formats', extensions: ['*']}
             ]
@@ -67,7 +67,7 @@ function createWindow ()
             defaultPath: (defaultFilename!=null) ? defaultFilename : undefined,
             filters: 
             [
-                {name: 'unreal', extensions: ['uasset', 'uexp', 'san', "prm", "flw", "fld", "sad", "lip", "frmd", "srdp", "stx"]},
+                {name: 'unreal', extensions: ['uasset', 'uexp', 'apb', 'asb', 'enumdef', 'fld', "flw", "frmd", 'lip', 'lua', 'msb', 'nmb', "prm", 'prmdef', 'repb', 'san', "srdp", "stx", "sad"]},
                 //{name: 'text', extensions: ['txt']},
                 //{name: 'All formats', extensions: ['*']}
             ]

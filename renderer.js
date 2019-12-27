@@ -23,9 +23,10 @@ document.addEventListener("DOMContentLoaded", function()
     let uasset_file = null;             //{id: uniqueId++, filename: "", path: "", data: "" }
     let uexp_files = [];
 
-    let bndfll_Extensions = ["san", "prm", "flw", "fld", "sad", "lip", "frmd", "srdp", "stx"];
-    //Todo check if all san have the id 0x08d6831d, prm have 0x08d68768 => if it's a yes, make a array with extensionID.
+    let bndfll_Extensions = ['apb', 'asb', 'enumdef', 'fld', "flw", "frmd", 'lip', 'lua', 'msb', 'nmb', "prm", 'prmdef', 'repb', 'san', "srdp", "stx", "sad"];
+    //after a check if all san have the id 0x08d6831d, prm have 0x08d68768, we can say, there is a link between the extension and the useId, but it's not exclusive and unique. few extensions could have the same id, and a extension could have few id (but there is a specific thing in name matching the useId).
 
+    
 
     //Can't success to have relative path of images inside html. they need __dirname :
     document.querySelectorAll('.bt_load > img').forEach( function(img){ img.src = `file://${__dirname}/img/load_file.png`; });
@@ -495,8 +496,8 @@ document.addEventListener("DOMContentLoaded", function()
     
         
         document.querySelector("#uexp_startId").value = "0x"+ toHexa(dataArray[fromHexa("00")]);
-        if(dataArray[fromHexa("00")] != 7)              //Todo check file with other than 07
-            log("warning", "Uexp file with another than 07 00 00 00 (at 0x00): "+ toHexa(dataArray[fromHexa("00")]), 10);
+        if((dataArray[fromHexa("00")] != 7) && (dataArray[fromHexa("00")] != 6))
+            log("warning", "Uexp file with another than 07 00 00 00 (at 0x00) or 0x06: "+ toHexa(dataArray[fromHexa("00")]), 10);
 
 
         let startBndFll = fromHexa("14");
@@ -512,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function()
         }
 
         document.querySelector("#bndfll_unknow").value = "0x"+ toHexa(dataArray[fromHexa("1C")]);
-        if(dataArray[fromHexa("1C")] != 1)                      //Todo check file with other than 01
+        if(dataArray[fromHexa("1C")] != 1)
             log("warning", "BNDFLL file with another than 01 00 00 00 (at 0x1C of Uexp): "+ toHexa(dataArray[fromHexa("1C")]), 10);    
 
         let nbFiles = getUint32(dataArray, fromHexa("20"));
@@ -589,7 +590,7 @@ document.addEventListener("DOMContentLoaded", function()
         let sizeFileHeader = fromHexa("38");
 
         
-        let buffer = new Uint8Array(filesize);          //todo check all have 0 value by default
+        let buffer = new Uint8Array(filesize);
         
 
         setUint32(buffer, fromHexa("0"), fromHexa( document.querySelector("#uexp_startId").value ));
